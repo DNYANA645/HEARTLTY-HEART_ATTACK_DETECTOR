@@ -4,3 +4,4 @@ numpy
 Pillow
 google-generativeai
 twilio
+pandas
