@@ -1,7 +1,6 @@
-pandas
-numpy
-seaborn
-matplotlib
-scikit-learn
+streamlit
 joblib
-google-colab
+numpy
+Pillow
+google-generativeai
+twilio
