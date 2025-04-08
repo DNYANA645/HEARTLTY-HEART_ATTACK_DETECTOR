@@ -212,14 +212,14 @@ def predict_heart_attack_risk(user_input, scaler, model):
 
     # Scale the user input
     try:
-        scaled_input = scaler.transform(np.array(user_input).reshape(1, -1))
+        scaled_input = scaler.transform(input_df)
     except Exception as e:
         st.error(f"Error scaling input data: {e}. Please check your input values.")
         return None, None, None, None, None, None, None  # Return None values to prevent further errors
 
     # Make prediction
     try:
-        prediction = model.predict(scaled_input)[0]
+        prediction = model.predict(scaled_input)
     except Exception as e:
         st.error(f"Error during prediction: {e}. Please ensure the model is compatible with the input data.")
         return None, None, None, None, None, None, None  # Return None values to prevent further errors
@@ -362,7 +362,7 @@ if page == "Home":
     if st.sidebar.button("Predict"):
         # Prepare the user input for prediction
         user_input = [age , sex , cp , trestbps , chol , fbs , restecg ,
-                       exang ,oldpeak,
+                      thalach, exang ,oldpeak,
                       slope ,
                       ca ,
                       thal]
