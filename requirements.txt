@@ -6,3 +6,5 @@ Pillow
 google-generativeai
 twilio
 pandas
+scikit-learn
+
