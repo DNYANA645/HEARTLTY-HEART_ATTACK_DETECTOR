@@ -212,7 +212,7 @@ def predict_heart_attack_risk(user_input, scaler, model):
 
     # Scale the user input
     try:
-        scaled_input = scaler.transform(input_df)
+        scaled_input = scaler.transform(np.array(user_input).reshape(1, -1))
     except Exception as e:
         st.error(f"Error scaling input data: {e}. Please check your input values.")
         return None, None, None, None, None, None, None  # Return None values to prevent further errors
