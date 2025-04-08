@@ -197,7 +197,7 @@ if st.button("🚨 Send Emergency Alert"):
 def load_model_and_scaler():
     try:
         rf_model = joblib.load('random_forest_model.pkl')
-        scaler = joblib.load('/content/scaler.pkl')
+        scaler = joblib.load('scaler.pkl')
         return rf_model, scaler
     except FileNotFoundError as e:
         st.error(f"Error: Model or scaler file not found. Please ensure 'random_forest_model.pkl' and 'scaler.pkl' are in the correct directory.")
