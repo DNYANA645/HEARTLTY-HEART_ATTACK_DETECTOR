@@ -353,6 +353,7 @@ if page == "Home":
     restecg = st.sidebar.selectbox("Resting ECG (restecg)", options=[0, 1, 2])
     thalach = st.sidebar.number_input("Max Heart Rate Achieved (thalach)", min_value=60,max_value=220,value=150)
     exang = st.sidebar.selectbox("Exercise-Induced Angina (exang)", options=[0 , 1], format_func=lambda x: "No" if x == 0 else "Yes")
+    oldpeak = st.sidebar.number_input("ST Depression (oldpeak)", min_value=0., max_value=10., value=0.)
     slope = st.sidebar.selectbox("Slope of Peak Exercise ST Segment (slope)", options=[0 , 1 , 2])
     ca = st.sidebar.number_input("Number of Major Vessels Colored by Fluoroscopy (ca)", min_value=0 , max_value=4 , value=0)
     thal = st.sidebar.selectbox("Thalassemia (thal)", options=[0 , 1 , 2 , 3])
@@ -361,7 +362,7 @@ if page == "Home":
     if st.sidebar.button("Predict"):
         # Prepare the user input for prediction
         user_input = [age , sex , cp , trestbps , chol , fbs , restecg ,
-                      thalach , exang ,
+                      thalach , exang ,oldpeak,
                       slope ,
                       ca ,
                       thal]
