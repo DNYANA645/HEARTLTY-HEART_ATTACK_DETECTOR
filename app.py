@@ -140,7 +140,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 # Emergency Contact Details
 EMERGENCY_EMAIL = "emergency@example.com"  # Replace with the recipient's email
 TWILIO_ACCOUNT_SID = "ACc418eadad41fa6405eba9b8e5057e664"
-TWILIO_AUTH_TOKEN = "8baa64400faec9a1344a5c6a80852228"
+TWILIO_AUTH_TOKEN = "7d08ac5328b34d43a588907e7658af50"
 TWILIO_PHONE_NUMBER = "+17753805206"  # Replace with Twilio number
 EMERGENCY_PHONE = " +917822966398"  # Replace with actual emergency contact number
 
