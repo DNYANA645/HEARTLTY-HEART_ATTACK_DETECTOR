@@ -361,7 +361,7 @@ if page == "Home":
     if st.sidebar.button("Predict"):
         # Prepare the user input for prediction
         user_input = [age , sex , cp , trestbps , chol , fbs , restecg ,
-                      thalach , exang , oldpeak ,
+                      thalach , exang ,
                       slope ,
                       ca ,
                       thal]
