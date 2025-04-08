@@ -118,7 +118,7 @@ def apply_custom_theme():
     )
 
  # Load and display the image
-image = Image.open("/content/h1.jpg")
+image = Image.open("h1.jpg")
 st.image(image, caption="Your Image",use_container_width=True)
 def get_gemini_response(prompt):
     try:
@@ -417,7 +417,7 @@ if page == "Home":
 elif page == "About App & Modules":
     # About App Section
     st.header("About This Application")
-    image = Image.open("/content/hq720.jpg")
+    image = Image.open("hq720.jpg")
     st.image(image, caption="Your Image",use_container_width=True)
     st.write("""
      This section showcases the performance of various machine learning models trained to predict the likelihood of heart disease. The models are evaluated based on metrics like **Accuracy**, **Precision**, **Recall**, and **F1-Score**. Below, we explain each evaluation parameter and how it relates to model performance. 📈
@@ -488,7 +488,7 @@ elif page == "About App & Modules":
 
     # About Modules Section
     st.subheader("Modules Used")
-    image = Image.open("/content/istockphoto-1515913422-612x612.jpg")
+    image = Image.open("istockphoto-1515913422-612x612.jpg")
     st.image(image, caption="Your Image",use_container_width=True)
     st.write("""
     - Risk Prediction Module: This module employs a Random Forest classifier trained on historical patient data.
@@ -517,7 +517,7 @@ elif page == "About App & Modules":
 elif page == "Symptoms Information":
     # Symptoms Information Section
     st.header("Heart Attack Symptoms")
-    image = Image.open("/content/190206-heart-attack-warning-signs-infographic-aha.webp")
+    image = Image.open("190206-heart-attack-warning-signs-infographic-aha.webp")
     st.image(image, caption="Your Image",use_container_width=True)
     st.write("""
     Recognizing the symptoms of a heart attack is crucial for timely intervention.
