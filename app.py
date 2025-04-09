@@ -169,7 +169,7 @@ def send_email_alert(name, risk_level):
 
 def send_sms_alert(name, risk_level):
     client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-    message = f"🚨 Emergency Alert: {name} has HEART ATTACK WITH- ({risk_level})! Immediate help needed!"
+    message = f"🚨 Emergency Alert: {name} HAS HEART ATTACK WITH RISK- ({risk_level})! Immediate help needed!"
 
     try:
         client.messages.create(body=message, from_=TWILIO_PHONE_NUMBER, to=EMERGENCY_PHONE)
