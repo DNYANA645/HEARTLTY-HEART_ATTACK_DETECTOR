@@ -1,6 +1,10 @@
 # ❤️ Heartly - Heart Attack Detection & SOS Alert System
 
-**Heartly** is a smart health monitoring web application that predicts the risk of a heart attack using a Machine Learning model. The app also features an AI-powered chatbot "Heartly" (powered by Gemini AI) for real-time assistance and includes an integrated SOS alert system via SMS and Email for emergency situations.
+**Heartly** is a smart health monitoring web application that predicts the risk of a heart attack using a Machine Learning model. The app also features an AI-powered chatbot "Heartly" (powered by Gemini AI) for real-time assistance and includes an integrated SOS alert system via SMS and Email for emergency situations
+
+---
+# LINK OF APP
+https://lastheart-lcbz6ha47wedry8ukva2kz.streamlit.app/
 
 ---
 
