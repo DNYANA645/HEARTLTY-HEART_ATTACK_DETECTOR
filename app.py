@@ -1,12 +1,124 @@
-%%writefile app.py
 import streamlit as st
 import joblib
 import numpy as np
 import streamlit as st
 from PIL import Image
 import google.generativeai as genai
+def apply_custom_theme():
+    st.markdown(
+        """
+        <style>
+        :root {
+            --primary-color: #BD5E8E;  /* Raspberry/Rose */
+            --secondary-color: #5D2A6D; /* Medium purple */
+            --accent-color: #D4AF37;    /* Gold accent */
+            --background-color: #F8F5FA; /* Very light purple-tinted background */
+            --card-color: #FFFFFF;      /* White for cards */
+            --text-color: #333333;      /* Dark text for contrast */
+            --font: 'Montserrat', sans-serif;
+        }
+        body {
+            font-family: var(--font);
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        .stApp {
+            background-color: var(--background-color);
+            background-image: linear-gradient(135deg, #F8F5FA 25%, #F0EBF7 100%);
+        }
+        h1 {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        h2, h3, h4, h5, h6 {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        .sidebar .sidebar-content {
+            background-image: linear-gradient(180deg, #F0EBF7 0%, #E8E1F2 100%);
+            border-right: 1px solid rgba(189, 94, 142, 0.2);
+        }
+        .css-1lcbmhc {
+            background-image: linear-gradient(180deg, #F0EBF7 0%, #E8E1F2 100%);
+        }
+        /* Main content area */
+        .css-ke7pzk {
+            background-color: transparent;
+        }
+        /* Container styling with subtle rose border */
+        .css-1r6slb0, .css-12w0qpk, .stAlert {
+            background-color: var(--card-color);
+            border: 1px solid rgba(189, 94, 142, 0.25);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        /* Button styling */
+        .stButton>button {
+            background: linear-gradient(45deg, #BD5E8E, #CB648F);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(189, 94, 142, 0.3);
+            transition: all 0.3s ease;
+        }
+        .stButton>button:hover {
+            background: linear-gradient(45deg, #CB648F, #DA6A96);
+            box-shadow: 0 4px 12px rgba(189, 94, 142, 0.4);
+            transform: translateY(-2px);
+        }
+        /* Input fields with rose accent */
+        input, select, textarea {
+            background-color: #FFFFFF !important;
+            color: #333333 !important;
+            border: 1px solid rgba(189, 94, 142, 0.3) !important;
+            border-radius: 6px !important;
+        }
+        input:focus, select:focus, textarea:focus {
+            border: 1px solid rgba(189, 94, 142, 0.8) !important;
+            box-shadow: 0 0 0 2px rgba(189, 94, 142, 0.2) !important;
+        }
+        /* Slider color */
+        .stSlider div[data-baseweb="slider"] div {
+            background-color: var(--primary-color) !important;
+        }
+        /* Progress bar */
+        .stProgress div {
+            background-color: var(--primary-color) !important;
+        }
+        /* Tabs styling */
+        .stTabs [data-baseweb="tab-list"] {
+            background-color: #F0EBF7;
+            border-radius: 8px;
+            padding: 2px;
+        }
+        .stTabs [data-baseweb="tab"] {
+            background-color: transparent;
+            color: var(--text-color);
+            border-radius: 6px;
+        }
+        .stTabs [aria-selected="true"] {
+            background-color: white;
+            border-bottom: 2px solid var(--primary-color) !important;
+        }
+        /* Dropdown menu */
+        div[data-baseweb="select"] > div {
+            background-color: white !important;
+            border: 1px solid rgba(189, 94, 142, 0.3) !important;
+        }
+        /* Gold accents for certain elements */
+        .stCheckbox label span p {
+            color: var(--secondary-color) !important;
+        }
+        .stExpander {
+            border-left: 1px solid var(--accent-color) !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
  # Load and display the image
-image = Image.open("/content/h1.jpg")
+image = Image.open("h1.jpg")
 st.image(image, caption="Your Image",use_container_width=True)
 def get_gemini_response(prompt):
     try:
@@ -28,13 +140,13 @@ genai.configure(api_key=GEMINI_API_KEY)
 # Emergency Contact Details
 EMERGENCY_EMAIL = "emergency@example.com"  # Replace with the recipient's email
 TWILIO_ACCOUNT_SID = "ACc418eadad41fa6405eba9b8e5057e664"
-TWILIO_AUTH_TOKEN = "8baa64400faec9a1344a5c6a80852228"
+TWILIO_AUTH_TOKEN = "05fd4e0093b0b3b1c4a913edc39cf50c"
 TWILIO_PHONE_NUMBER = "+17753805206"  # Replace with Twilio number
 EMERGENCY_PHONE = " +917822966398"  # Replace with actual emergency contact number
 
 def send_email_alert(name, risk_level):
-    sender_email = " dnyaneshshinde645@gmail.com"  # Use your email
-    sender_password = "dnyana645"  # Use an app password
+    sender_email = "dnyaneshshinde645@gmail.com"  # Use your email
+    sender_password = "tdqw nwar bjcl alpe"  # Use an app password
 
     subject = "🚨 EMERGENCY: Possible Heart Attack Risk!"
     body = f"Patient {name} is detected with a high heart attack risk level: {risk_level}. Immediate action needed!"
@@ -57,7 +169,7 @@ def send_email_alert(name, risk_level):
 
 def send_sms_alert(name, risk_level):
     client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-    message = f"🚨 Emergency Alert: {name} has a  lots of love for you ma ({risk_level})! Immediate help needed!"
+    message = f"🚨 Emergency Alert: {name} HAS HEART ATTACK WITH RISK- ({risk_level})! Immediate help needed!"
 
     try:
         client.messages.create(body=message, from_=TWILIO_PHONE_NUMBER, to=EMERGENCY_PHONE)
@@ -85,7 +197,7 @@ if st.button("🚨 Send Emergency Alert"):
 def load_model_and_scaler():
     try:
         rf_model = joblib.load('random_forest_model.pkl')
-        scaler = joblib.load('/content/scaler.pkl')
+        scaler = joblib.load('scaler.pkl')
         return rf_model, scaler
     except FileNotFoundError as e:
         st.error(f"Error: Model or scaler file not found. Please ensure 'random_forest_model.pkl' and 'scaler.pkl' are in the correct directory.")
@@ -107,7 +219,7 @@ def predict_heart_attack_risk(user_input, scaler, model):
 
     # Make prediction
     try:
-        prediction = model.predict(scaled_input)[0]
+        prediction = model.predict(scaled_input)
     except Exception as e:
         st.error(f"Error during prediction: {e}. Please ensure the model is compatible with the input data.")
         return None, None, None, None, None, None, None  # Return None values to prevent further errors
@@ -250,7 +362,7 @@ if page == "Home":
     if st.sidebar.button("Predict"):
         # Prepare the user input for prediction
         user_input = [age , sex , cp , trestbps , chol , fbs , restecg ,
-                      thalach , exang , oldpeak ,
+                      thalach, exang ,oldpeak,
                       slope ,
                       ca ,
                       thal]
@@ -305,7 +417,7 @@ if page == "Home":
 elif page == "About App & Modules":
     # About App Section
     st.header("About This Application")
-    image = Image.open("/content/hq720.jpg")
+    image = Image.open("hq720.jpg")
     st.image(image, caption="Your Image",use_container_width=True)
     st.write("""
      This section showcases the performance of various machine learning models trained to predict the likelihood of heart disease. The models are evaluated based on metrics like *Accuracy, **Precision, **Recall, and **F1-Score*. Below, we explain each evaluation parameter and how it relates to model performance. 📈
@@ -376,7 +488,7 @@ elif page == "About App & Modules":
 
     # About Modules Section
     st.subheader("Modules Used")
-    image = Image.open("/content/istockphoto-1515913422-612x612.jpg")
+    image = Image.open("istockphoto-1515913422-612x612.jpg")
     st.image(image, caption="Your Image",use_container_width=True)
     st.write("""
     - Risk Prediction Module: This module employs a Random Forest classifier trained on historical patient data.
@@ -405,7 +517,7 @@ elif page == "About App & Modules":
 elif page == "Symptoms Information":
     # Symptoms Information Section
     st.header("Heart Attack Symptoms")
-    image = Image.open("/content/190206-heart-attack-warning-signs-infographic-aha.webp")
+    image = Image.open("190206-heart-attack-warning-signs-infographic-aha.webp")
     st.image(image, caption="Your Image",use_container_width=True)
     st.write("""
     Recognizing the symptoms of a heart attack is crucial for timely intervention.
@@ -429,13 +541,13 @@ elif page == "Symptoms Information":
     """)
 # Gemini AI Integration Sidebar
 st.sidebar.markdown("---")
-st.sidebar.subheader("🤖 Gemini AI - Ask Anything")
-ai_prompt = st.sidebar.text_area("Ask Gemini AI about nutrition, diet, or meal plans:")
+st.sidebar.subheader("HEARTLY ❤")
+ai_prompt = st.sidebar.text_area("Ask HEARTLY about WHAT DO YOU WANT TO ASK:")
 
-if st.sidebar.button("🔍 Ask Gemini"):
+if st.sidebar.button("🔍 ASK ME"):
     if ai_prompt:
         response = get_gemini_response(ai_prompt)
-        st.sidebar.write("Gemini AI Response:")
+        st.sidebar.write("* HEARTLY Response:*")
         st.sidebar.write(response)
     else:
         st.sidebar.warning("⚠ Please enter a question.")
