@@ -146,7 +146,7 @@ EMERGENCY_PHONE = " +917822966398"  # Replace with actual emergency contact numb
 
 def send_email_alert(name, risk_level):
     sender_email = "dnyaneshshinde645@gmail.com"  # Use your email
-    sender_password = "ufzz ggct heer aeux"  # Use an app password
+    sender_password = "tdqw nwar bjcl alpe"  # Use an app password
 
     subject = "🚨 EMERGENCY: Possible Heart Attack Risk!"
     body = f"Patient {name} is detected with a high heart attack risk level: {risk_level}. Immediate action needed!"
