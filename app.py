@@ -1,124 +1,12 @@
+%%writefile app.py
 import streamlit as st
 import joblib
 import numpy as np
 import streamlit as st
 from PIL import Image
 import google.generativeai as genai
-def apply_custom_theme():
-    st.markdown(
-        """
-        <style>
-        :root {
-            --primary-color: #BD5E8E;  /* Raspberry/Rose */
-            --secondary-color: #5D2A6D; /* Medium purple */
-            --accent-color: #D4AF37;    /* Gold accent */
-            --background-color: #F8F5FA; /* Very light purple-tinted background */
-            --card-color: #FFFFFF;      /* White for cards */
-            --text-color: #333333;      /* Dark text for contrast */
-            --font: 'Montserrat', sans-serif;
-        }
-        body {
-            font-family: var(--font);
-            color: var(--text-color);
-            background-color: var(--background-color);
-        }
-        .stApp {
-            background-color: var(--background-color);
-            background-image: linear-gradient(135deg, #F8F5FA 25%, #F0EBF7 100%);
-        }
-        h1 {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        h2, h3, h4, h5, h6 {
-            color: var(--secondary-color);
-            font-weight: 500;
-        }
-        .sidebar .sidebar-content {
-            background-image: linear-gradient(180deg, #F0EBF7 0%, #E8E1F2 100%);
-            border-right: 1px solid rgba(189, 94, 142, 0.2);
-        }
-        .css-1lcbmhc {
-            background-image: linear-gradient(180deg, #F0EBF7 0%, #E8E1F2 100%);
-        }
-        /* Main content area */
-        .css-ke7pzk {
-            background-color: transparent;
-        }
-        /* Container styling with subtle rose border */
-        .css-1r6slb0, .css-12w0qpk, .stAlert {
-            background-color: var(--card-color);
-            border: 1px solid rgba(189, 94, 142, 0.25);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        /* Button styling */
-        .stButton>button {
-            background: linear-gradient(45deg, #BD5E8E, #CB648F);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(189, 94, 142, 0.3);
-            transition: all 0.3s ease;
-        }
-        .stButton>button:hover {
-            background: linear-gradient(45deg, #CB648F, #DA6A96);
-            box-shadow: 0 4px 12px rgba(189, 94, 142, 0.4);
-            transform: translateY(-2px);
-        }
-        /* Input fields with rose accent */
-        input, select, textarea {
-            background-color: #FFFFFF !important;
-            color: #333333 !important;
-            border: 1px solid rgba(189, 94, 142, 0.3) !important;
-            border-radius: 6px !important;
-        }
-        input:focus, select:focus, textarea:focus {
-            border: 1px solid rgba(189, 94, 142, 0.8) !important;
-            box-shadow: 0 0 0 2px rgba(189, 94, 142, 0.2) !important;
-        }
-        /* Slider color */
-        .stSlider div[data-baseweb="slider"] div {
-            background-color: var(--primary-color) !important;
-        }
-        /* Progress bar */
-        .stProgress div {
-            background-color: var(--primary-color) !important;
-        }
-        /* Tabs styling */
-        .stTabs [data-baseweb="tab-list"] {
-            background-color: #F0EBF7;
-            border-radius: 8px;
-            padding: 2px;
-        }
-        .stTabs [data-baseweb="tab"] {
-            background-color: transparent;
-            color: var(--text-color);
-            border-radius: 6px;
-        }
-        .stTabs [aria-selected="true"] {
-            background-color: white;
-            border-bottom: 2px solid var(--primary-color) !important;
-        }
-        /* Dropdown menu */
-        div[data-baseweb="select"] > div {
-            background-color: white !important;
-            border: 1px solid rgba(189, 94, 142, 0.3) !important;
-        }
-        /* Gold accents for certain elements */
-        .stCheckbox label span p {
-            color: var(--secondary-color) !important;
-        }
-        .stExpander {
-            border-left: 1px solid var(--accent-color) !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
  # Load and display the image
-image = Image.open("h1.jpg")
+image = Image.open("/content/h1.jpg")
 st.image(image, caption="Your Image",use_container_width=True)
 def get_gemini_response(prompt):
     try:
@@ -140,13 +28,13 @@ genai.configure(api_key=GEMINI_API_KEY)
 # Emergency Contact Details
 EMERGENCY_EMAIL = "emergency@example.com"  # Replace with the recipient's email
 TWILIO_ACCOUNT_SID = "ACc418eadad41fa6405eba9b8e5057e664"
-TWILIO_AUTH_TOKEN = "05fd4e0093b0b3b1c4a913edc39cf50c"
+TWILIO_AUTH_TOKEN = "8baa64400faec9a1344a5c6a80852228"
 TWILIO_PHONE_NUMBER = "+17753805206"  # Replace with Twilio number
 EMERGENCY_PHONE = " +917822966398"  # Replace with actual emergency contact number
 
 def send_email_alert(name, risk_level):
-    sender_email = "dnyaneshshinde645@gmail.com"  # Use your email
-    sender_password = "tdqw nwar bjcl alpe"  # Use an app password
+    sender_email = " dnyaneshshinde645@gmail.com"  # Use your email
+    sender_password = "dnyana645"  # Use an app password
 
     subject = "🚨 EMERGENCY: Possible Heart Attack Risk!"
     body = f"Patient {name} is detected with a high heart attack risk level: {risk_level}. Immediate action needed!"
@@ -165,17 +53,17 @@ def send_email_alert(name, risk_level):
         server.quit()
         st.success("🚀 Emergency email sent successfully!")
     except Exception as e:
-        st.error(f"⚠️ Error sending email: {e}")
+        st.error(f"⚠ Error sending email: {e}")
 
 def send_sms_alert(name, risk_level):
     client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-    message = f"🚨 Emergency Alert: {name} HAS HEART ATTACK WITH RISK- ({risk_level})! Immediate help needed!"
+    message = f"🚨 Emergency Alert: {name} has a  lots of love for you ma ({risk_level})! Immediate help needed!"
 
     try:
         client.messages.create(body=message, from_=TWILIO_PHONE_NUMBER, to=EMERGENCY_PHONE)
         st.success("📲 Emergency SMS sent successfully!")
     except Exception as e:
-        st.error(f"⚠️ Error sending SMS: {e}")
+        st.error(f"⚠ Error sending SMS: {e}")
 
 st.title("🚑 Heart Attack Prediction with SOS Alert")
 
@@ -189,7 +77,7 @@ if st.button("🚨 Send Emergency Alert"):
         send_email_alert(name, risk_level)
         send_sms_alert(name, risk_level)
     else:
-        st.warning("⚠️ Alert only triggers for High Risk cases.")
+        st.warning("⚠ Alert only triggers for High Risk cases.")
 
 
 
@@ -197,7 +85,7 @@ if st.button("🚨 Send Emergency Alert"):
 def load_model_and_scaler():
     try:
         rf_model = joblib.load('random_forest_model.pkl')
-        scaler = joblib.load('scaler.pkl')
+        scaler = joblib.load('/content/scaler.pkl')
         return rf_model, scaler
     except FileNotFoundError as e:
         st.error(f"Error: Model or scaler file not found. Please ensure 'random_forest_model.pkl' and 'scaler.pkl' are in the correct directory.")
@@ -219,7 +107,7 @@ def predict_heart_attack_risk(user_input, scaler, model):
 
     # Make prediction
     try:
-        prediction = model.predict(scaled_input)
+        prediction = model.predict(scaled_input)[0]
     except Exception as e:
         st.error(f"Error during prediction: {e}. Please ensure the model is compatible with the input data.")
         return None, None, None, None, None, None, None  # Return None values to prevent further errors
@@ -275,7 +163,7 @@ def predict_heart_attack_risk(user_input, scaler, model):
     else:
         risk_level = "Low"
         message = (
-            "Your heart attack risk appears to be low. ✅ However, it is essential to maintain a healthy lifestyle 🏃‍♀ to ensure long-term cardiovascular health. ❤️"
+            "Your heart attack risk appears to be low. ✅ However, it is essential to maintain a healthy lifestyle 🏃‍♀ to ensure long-term cardiovascular health. ❤"
         )
 
         precautions = [
@@ -291,7 +179,7 @@ def predict_heart_attack_risk(user_input, scaler, model):
             "2. Stay Active Daily: Engage in at least 150 minutes of moderate aerobic exercise per week. 🏃",
             "3. Practice Stress Reduction: Use techniques like mindfulness 🧘 or yoga to manage stress. 😌",
             "4. Moderate Alcohol Intake: Adhere to recommended limits for alcohol consumption. 🍺",
-            "5. Avoid Smoking: Refrain from smoking 🚭 to maintain optimal heart health. ❤️"
+            "5. Avoid Smoking: Refrain from smoking 🚭 to maintain optimal heart health. ❤"
         ]
 
         exercise = [
@@ -321,7 +209,7 @@ def predict_heart_attack_risk(user_input, scaler, model):
     return risk_level, message, precautions, guidance, exercise, diet, medications
 
 # Set up Streamlit app
-st.title("Heart Attack Risk Prediction-❤️")
+st.title("Heart Attack Risk Prediction-❤")
 
 # Sidebar for navigation
 page = st.sidebar.selectbox("Choose a page:", ["Home", "About App & Modules", "Symptoms Information"])
@@ -362,7 +250,7 @@ if page == "Home":
     if st.sidebar.button("Predict"):
         # Prepare the user input for prediction
         user_input = [age , sex , cp , trestbps , chol , fbs , restecg ,
-                      thalach, exang ,oldpeak,
+                      thalach , exang , oldpeak ,
                       slope ,
                       ca ,
                       thal]
@@ -417,49 +305,49 @@ if page == "Home":
 elif page == "About App & Modules":
     # About App Section
     st.header("About This Application")
-    image = Image.open("hq720.jpg")
+    image = Image.open("/content/hq720.jpg")
     st.image(image, caption="Your Image",use_container_width=True)
     st.write("""
-     This section showcases the performance of various machine learning models trained to predict the likelihood of heart disease. The models are evaluated based on metrics like **Accuracy**, **Precision**, **Recall**, and **F1-Score**. Below, we explain each evaluation parameter and how it relates to model performance. 📈
+     This section showcases the performance of various machine learning models trained to predict the likelihood of heart disease. The models are evaluated based on metrics like *Accuracy, **Precision, **Recall, and **F1-Score*. Below, we explain each evaluation parameter and how it relates to model performance. 📈
 
     ### Evaluating Parameters:
     To assess the quality of a model, we use the following metrics:
 
-    1. **Accuracy**: The proportion of correct predictions made by the model out of all predictions. 
+    1. *Accuracy*: The proportion of correct predictions made by the model out of all predictions. 
         - A higher accuracy means the model is making more correct predictions overall.
-    2. **Precision**: The proportion of true positive predictions (correctly predicted heart attack cases) out of all positive predictions made by the model.
+    2. *Precision*: The proportion of true positive predictions (correctly predicted heart attack cases) out of all positive predictions made by the model.
         - Higher precision means the model is good at predicting positive cases and not making too many false positives.
-    3. **Recall**: The proportion of true positive predictions (correct heart attack cases) out of all actual positive cases in the dataset.
+    3. *Recall*: The proportion of true positive predictions (correct heart attack cases) out of all actual positive cases in the dataset.
         - A higher recall means the model is good at identifying heart attack cases and not missing too many.
-    4. **F1-Score**: The harmonic mean of precision and recall, offering a balance between the two.
+    4. *F1-Score*: The harmonic mean of precision and recall, offering a balance between the two.
         - A higher F1-Score indicates that both precision and recall are high, meaning the model is both accurate and reliable.
 
     ### Confusion Matrix for Random Forest and Decision Tree:
-    We also evaluate models using the **Confusion Matrix**, which helps understand the breakdown of predictions into:
-    - **True Positives (TP)**: Correct predictions of a heart attack.
-    - **True Negatives (TN)**: Correct predictions of no heart attack.
-    - **False Positives (FP)**: Incorrect predictions of a heart attack when there is none.
-    - **False Negatives (FN)**: Incorrect predictions of no heart attack when there is one.
+    We also evaluate models using the *Confusion Matrix*, which helps understand the breakdown of predictions into:
+    - *True Positives (TP)*: Correct predictions of a heart attack.
+    - *True Negatives (TN)*: Correct predictions of no heart attack.
+    - *False Positives (FP)*: Incorrect predictions of a heart attack when there is none.
+    - *False Negatives (FN)*: Incorrect predictions of no heart attack when there is one.
     
     The confusion matrix shows how well the model distinguishes between the two classes (heart attack vs. no heart attack).
 
     ### Performance Metrics of Random Forest:
-    **Accuracy**: 83.70%  
+    *Accuracy*: 83.70%  
     Random Forest's confusion matrix shows that:
     
-    - For **Class 0 (No Heart Attack)**, the model has a precision of 0.79 and a recall of 0.79, indicating a reasonable balance between predicting no heart attack and avoiding false positives.
-    - For **Class 1 (Heart Attack)**, the precision and recall are both higher at 0.87, meaning the model is quite effective at identifying actual heart attack cases.
+    - For *Class 0 (No Heart Attack)*, the model has a precision of 0.79 and a recall of 0.79, indicating a reasonable balance between predicting no heart attack and avoiding false positives.
+    - For *Class 1 (Heart Attack)*, the precision and recall are both higher at 0.87, meaning the model is quite effective at identifying actual heart attack cases.
     
-    Overall, the Random Forest model performs well with a **macro average** of 0.83 for precision, recall, and F1-score, and a **weighted average** of 0.84, showing good overall performance across both classes.
+    Overall, the Random Forest model performs well with a *macro average* of 0.83 for precision, recall, and F1-score, and a *weighted average* of 0.84, showing good overall performance across both classes.
 
     ### Performance Metrics of Decision Tree:
-    **Accuracy**: 83.70%  
+    *Accuracy*: 83.70%  
     Decision Tree’s confusion matrix shows:
     
-    - For **Class 0 (No Heart Attack)**, the precision is 0.88, but recall drops to 0.67, meaning that the model is good at predicting no heart attack but misses some cases.
-    - For **Class 1 (Heart Attack)**, the precision is 0.82 and recall is 0.94, indicating that the model is very effective at identifying true heart attack cases, but may sometimes misclassify a few no-heart-attack cases as heart attack cases.
+    - For *Class 0 (No Heart Attack)*, the precision is 0.88, but recall drops to 0.67, meaning that the model is good at predicting no heart attack but misses some cases.
+    - For *Class 1 (Heart Attack)*, the precision is 0.82 and recall is 0.94, indicating that the model is very effective at identifying true heart attack cases, but may sometimes misclassify a few no-heart-attack cases as heart attack cases.
 
-    The Decision Tree model's **macro average** is 0.81 for recall and 0.82 for F1-score, with a **weighted average** of 0.84, suggesting it performs well but with a slight bias towards predicting heart attacks.
+    The Decision Tree model's *macro average* is 0.81 for recall and 0.82 for F1-score, with a *weighted average* of 0.84, suggesting it performs well but with a slight bias towards predicting heart attacks.
 
     ### Performance Comparison of All Models:
     Below is the comparison of the performance of all the models used in this study:
@@ -468,27 +356,27 @@ elif page == "About App & Modules":
     |------------------------------|--------------|-----------|--------|----------|
     | Logistic Regression           | 82.22        | 0.82      | 0.82   | 0.82     |
     | Naive Bayes                   | 78.52        | 0.79      | 0.79   | 0.79     |
-    | **Random Forest**             | **83.70**    | **0.84**  | **0.84** | **0.84** |
+    | *Random Forest*             | *83.70*    | *0.84*  | *0.84* | *0.84* |
     | Extreme Gradient Boost        | 61.48        | 0.38      | 0.61   | 0.47     |
     | K-Nearest Neighbour           | 82.22        | 0.82      | 0.82   | 0.82     |
-    | **Decision Tree**             | **83.70**    | **0.84**  | **0.84** | **0.83** |
+    | *Decision Tree*             | *83.70*    | *0.84*  | *0.84* | *0.83* |
     | Support Vector Machine        | 83.70        | 0.84      | 0.84   | 0.83     |
 
     ### Insights:
-    - The **Random Forest**, **Decision Tree**, and **Support Vector Machine** models achieved the highest **accuracy (83.70%)**. This shows their strong ability to predict heart attack risk.
-    - **Random Forest** stands out with a balanced performance across precision, recall, and F1-Score, making it a reliable model for heart attack prediction.
-    - While **Extreme Gradient Boost** has a much lower accuracy (61.48%) and precision (0.38), it struggles with predicting heart attack cases accurately and is not ideal for this task.
-    - **Logistic Regression** and **K-Nearest Neighbour** perform similarly to Random Forest, but slightly less accurate and precise.
+    - The *Random Forest, **Decision Tree, and **Support Vector Machine* models achieved the highest *accuracy (83.70%)*. This shows their strong ability to predict heart attack risk.
+    - *Random Forest* stands out with a balanced performance across precision, recall, and F1-Score, making it a reliable model for heart attack prediction.
+    - While *Extreme Gradient Boost* has a much lower accuracy (61.48%) and precision (0.38), it struggles with predicting heart attack cases accurately and is not ideal for this task.
+    - *Logistic Regression* and *K-Nearest Neighbour* perform similarly to Random Forest, but slightly less accurate and precise.
 
     ### Conclusion:
-    The **Random Forest** and **Decision Tree** models both perform exceptionally well and are our top picks for predicting heart attack risk. They balance accuracy, precision, recall, and F1-Score, providing a reliable prediction system for heart disease risk assessment. 🔍💓
+    The *Random Forest* and *Decision Tree* models both perform exceptionally well and are our top picks for predicting heart attack risk. They balance accuracy, precision, recall, and F1-Score, providing a reliable prediction system for heart disease risk assessment. 🔍💓
 
     We encourage users to use these predictions and visualizations to make informed decisions about their health. With further improvements in data collection and model training, we aim to increase the accuracy of these models for better, more personalized health predictions in the future.
     """)
 
     # About Modules Section
     st.subheader("Modules Used")
-    image = Image.open("istockphoto-1515913422-612x612.jpg")
+    image = Image.open("/content/istockphoto-1515913422-612x612.jpg")
     st.image(image, caption="Your Image",use_container_width=True)
     st.write("""
     - Risk Prediction Module: This module employs a Random Forest classifier trained on historical patient data.
@@ -517,7 +405,7 @@ elif page == "About App & Modules":
 elif page == "Symptoms Information":
     # Symptoms Information Section
     st.header("Heart Attack Symptoms")
-    image = Image.open("190206-heart-attack-warning-signs-infographic-aha.webp")
+    image = Image.open("/content/190206-heart-attack-warning-signs-infographic-aha.webp")
     st.image(image, caption="Your Image",use_container_width=True)
     st.write("""
     Recognizing the symptoms of a heart attack is crucial for timely intervention.
@@ -541,13 +429,13 @@ elif page == "Symptoms Information":
     """)
 # Gemini AI Integration Sidebar
 st.sidebar.markdown("---")
-st.sidebar.subheader("HEARTLY ❤️")
-ai_prompt = st.sidebar.text_area("Ask HEARTLY about WHAT DO YOU WANT TO ASK:")
+st.sidebar.subheader("🤖 Gemini AI - Ask Anything")
+ai_prompt = st.sidebar.text_area("Ask Gemini AI about nutrition, diet, or meal plans:")
 
-if st.sidebar.button("🔍 ASK ME"):
+if st.sidebar.button("🔍 Ask Gemini"):
     if ai_prompt:
         response = get_gemini_response(ai_prompt)
-        st.sidebar.write("* HEARTLY Response:*")
+        st.sidebar.write("Gemini AI Response:")
         st.sidebar.write(response)
     else:
         st.sidebar.warning("⚠ Please enter a question.")
