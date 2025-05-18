@@ -275,7 +275,7 @@ def predict_heart_attack_risk(user_input, scaler, model):
     else:
         risk_level = "Low"
         message = (
-            "Your heart attack risk appears to be low. ✅ However, it is essential to maintain a healthy lifestyle 🏃‍♀ to ensure long-term cardiovascular health. ❤"
+            "Your heart attack risk appears to be low. ✅ However, it is essential to maintain a healthy lifestyle 🏃‍♀ to ensure long-term cardiovascular health. ❤️"
         )
 
         precautions = [
@@ -291,7 +291,7 @@ def predict_heart_attack_risk(user_input, scaler, model):
             "2. Stay Active Daily: Engage in at least 150 minutes of moderate aerobic exercise per week. 🏃",
             "3. Practice Stress Reduction: Use techniques like mindfulness 🧘 or yoga to manage stress. 😌",
             "4. Moderate Alcohol Intake: Adhere to recommended limits for alcohol consumption. 🍺",
-            "5. Avoid Smoking: Refrain from smoking 🚭 to maintain optimal heart health. ❤"
+            "5. Avoid Smoking: Refrain from smoking 🚭 to maintain optimal heart health. ❤️"
         ]
 
         exercise = [
@@ -321,7 +321,7 @@ def predict_heart_attack_risk(user_input, scaler, model):
     return risk_level, message, precautions, guidance, exercise, diet, medications
 
 # Set up Streamlit app
-st.title("Heart Attack Risk Prediction-❤")
+st.title("Heart Attack Risk Prediction-❤️")
 
 # Sidebar for navigation
 page = st.sidebar.selectbox("Choose a page:", ["Home", "About App & Modules", "Symptoms Information"])
@@ -541,7 +541,7 @@ elif page == "Symptoms Information":
     """)
 # Gemini AI Integration Sidebar
 st.sidebar.markdown("---")
-st.sidebar.subheader("HEARTLY ❤")
+st.sidebar.subheader("HEARTLY ❤️")
 ai_prompt = st.sidebar.text_area("Ask HEARTLY about WHAT DO YOU WANT TO ASK:")
 
 if st.sidebar.button("🔍 ASK ME"):
