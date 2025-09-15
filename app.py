@@ -136,28 +136,9 @@ from twilio.rest import Client
 import streamlit as st
 import google.generativeai as genai
 
-# 🔑 Configure Gemini API with your Streamlit Cloud secret
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-
-# -------------------------------
-# Streamlit UI Code
-# -------------------------------
-st.title("Heart Attack Risk Prediction with Chatbot")
-
-user_input = st.text_input("Ask the Health Chatbot:")
-
-if st.button("Ask"):
-    if user_input:
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        response = model.generate_content(user_input)
-        st.write(response.text)
-
 # Load Gemini AI API Key
-genai.configure(api_key="AIzaSyCOmOn6VCd1URdTw8yAOde36c0PmoOfEX4")  # from AI Studio
-
-model = genai.GenerativeModel("gemini-1.5-flash")
-response = model.generate_content("Hello Gemini!")
-print(response.text)
+GEMINI_API_KEY = "AIzaSyAhzATTujBYQwdUdGAwnwNediMhXkiMDvI"
+genai.configure(api_key=GEMINI_API_KEY)
 
 # Emergency Contact Details
 EMERGENCY_EMAIL = "emergency@example.com"  # Replace with the recipient's email
