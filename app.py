@@ -134,8 +134,11 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from twilio.rest import Client
 # Load Gemini AI API Key
-GEMINI_API_KEY = "AIzaSyCOmOn6VCd1URdTw8yAOde36c0PmoOfEX4"
-genai.configure(api_key=GEMINI_API_KEY)
+genai.configure(api_key="YOUR_API_KEY")  # from AI Studio
+
+model = genai.GenerativeModel("gemini-1.5-flash")
+response = model.generate_content("Hello Gemini!")
+print(response.text)
 
 # Emergency Contact Details
 EMERGENCY_EMAIL = "emergency@example.com"  # Replace with the recipient's email
