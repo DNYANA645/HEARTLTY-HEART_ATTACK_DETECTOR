@@ -137,7 +137,7 @@ import streamlit as st
 import google.generativeai as genai
 
 # Load Gemini AI API Key
-GEMINI_API_KEY = "AIzaSyAhzATTujBYQwdUdGAwnwNediMhXkiMDvI"
+GEMINI_API_KEY = "AIzaSyDnI_MLvTZb38YX9aBwfT69Aq2_67TMHmE"
 genai.configure(api_key=GEMINI_API_KEY)
 
 # Emergency Contact Details
